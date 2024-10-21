@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ blog.title }}</title>
+</head>
+<body>
+    <h1>{{ blog.title }}</h1>
+    {% if blog.subtitle %}
+        <h2>{{ blog.subtitle }}</h2>
+    {% endif %}
+    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" style="max-width: 500px;">
+    <p>{{ blog.body }}</p>
+    <a href="{% url 'blog_list' %}">Volver a la lista de Blogs</a>
+</body>
+</html>

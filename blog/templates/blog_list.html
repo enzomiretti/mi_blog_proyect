@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Blogs</title>
+</head>
+<body>
+    <h1>Lista de Blogs</h1>
+    <ul>
+        {% for blog in blogs %}
+            <li>
+                <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
+                {% if blog.subtitle %}
+                    <h2>{{ blog.subtitle }}</h2>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Volver a Inicio</a>
+</body>
+</html>
