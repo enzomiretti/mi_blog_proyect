@@ -107,7 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -128,5 +129,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-LOGIN_REDIRECT_URL = 'blog_list'  # Asegúrate de que esta URL esté definida en tus URL patterns
-LOGIN_URL = 'login'  # Indica la ruta para el inicio de sesión
+LOGIN_REDIRECT_URL = 'blog_list'  
+LOGIN_URL = 'login'  
+
+LOGOUT_REDIRECT_URL = 'home'  
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] 

@@ -3,19 +3,56 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Blog</title>
+    <title>Nuestro Blog</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
 </head>
 <body>
-    <h1>Bienvenido a Mi Blog</h1>
+    <h1>¡Bienvenido a Nuestro Blog!</h1>
+    <p style="text-align: center;">Un blog es un sitio web o diario digital en el que se publica contenido de forma regular sobre un tema específico o libre.</p>
+    <p style="text-align: center;">"¿Tienes algo que decir? Tu blog es el lugar perfecto para compartir tus ideas y opiniones."</p>
+    <h2 style="text-align: center;">☆ Unete a nosotros ☆</h2>
+
+    {% if messages %}
+        <div id="logout-message">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <nav>
-        <a href="{% url 'signup' %}">Registrarse</a> |
-        <a href="{% url 'login' %}">Iniciar Sesión</a>
+        <form action="{% url 'signup' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">Registrarse</button> |
+        </form>
+        <form action="{% url 'login' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">Iniciar sesión</button> |
+        </form>
+        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">Cerrar sesión</button>
+        </form> 
     </nav>
 
-    <h2>Crear un Nuevo Blog</h2>
-    <a href="{% url 'create_blog' %}">Crear Blog</a>
+    <div class="horizontal-links">
+        <h3>• Crear un Nuevo Blog</h3>
+        <a href="{% url 'create_blog' %}">Crear Blog</a>
+        <h3>• Ver Blogs</h3>
+        <a href="{% url 'blog_list' %}">Lista de Blogs</a>
+    </div>
 
-    <h2>Ver Blogs</h2>
-    <a href="{% url 'blog_list' %}">Lista de Blogs</a>
+    <script>
+        window.onload = function() {
+            var message = document.getElementById('logout-message');
+            if (message) {
+                message.style.display = 'block'; 
+                setTimeout(function() {
+                    message.style.display = 'none';  
+                }, 3000);  
+            }
+        };
+    </script>
 </body>
 </html>

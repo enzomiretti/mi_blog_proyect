@@ -1,28 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Crear Blog</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
 </head>
 <body>
     <h1>Crear un Nuevo Blog</h1>
-    <form method="POST" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data">  
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Crear Blog</button>
     </form>
-
-    {% if form.errors %}
-        <div class="errors">
-            <ul>
-            {% for field in form %}
-                {% for error in field.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
-    <a href="{% url 'home' %}">Volver a Inicio</a>
+    <a href="{% url 'blog_list' %}">Volver a la lista de blogs</a>
 </body>
 </html>

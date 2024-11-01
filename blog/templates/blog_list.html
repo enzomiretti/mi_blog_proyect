@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Blogs</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
 </head>
 <body>
     <h1>Lista de Blogs</h1>
@@ -13,6 +15,8 @@
                 {% if blog.subtitle %}
                     <h2>{{ blog.subtitle }}</h2>
                 {% endif %}
+                <a href="{% url 'delete_blog' blog.pk %}">Eliminar Blog</a> 
+                <br><br>
             </li>
         {% endfor %}
     </ul>
